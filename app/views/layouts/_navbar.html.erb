@@ -2,15 +2,19 @@
 <nav>
     <ul>
         <li>
-          <b><%= link_to "Songs", songs_path%></b>
+          <b><%= link_to "Songs", songs_path, class:"nav-link" %></b>
         </li>
 
         <li>
-          <b><%= link_to "Playlist", playlists_path%></b>
+          <b><%= link_to "Playlist", playlists_path, class:"nav-link" %></b>
         </li>
-        <span class="spacer"></span>
+        
         <li>
-          <b>Sign Out</b>
+          <b><%= link_to "Edit Profile", edit_user_registration_path, class: "nav-link" %></b>
+        </li>
+
+        <li>
+          <b><%= link_to "Sign Out", destroy_user_session_path, method: :delete, class:"nav-link" %></b>
         </li>
     </ul>
 </nav>
