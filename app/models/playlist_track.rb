@@ -1,5 +1,5 @@
 class PlaylistTrack < ApplicationRecord
     
-    #belongs_to :song
-    #belongs_to :playlist
+    belongs_to :song
+    belongs_to :playlist
 end
