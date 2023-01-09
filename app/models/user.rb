@@ -4,6 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   
-  #has_many :playlists, dependent: :destory
-  #has_many :playlists_tracks, thorugh: :playlists, source: :song
+  has_many :songs, dependent: :destroy
+  has_many :playlists, dependent: :destroy
 end
