@@ -3,7 +3,7 @@ class PlaylistsController < ApplicationController
 
   # GET /playlists or /playlists.json
   def index
-    @playlists = Playlist.all
+    @playlists = current_user.playlists
   end
 
   # GET /playlists/1 or /playlists/1.json
@@ -21,7 +21,7 @@ class PlaylistsController < ApplicationController
 
   # POST /playlists or /playlists.json
   def create
-    @playlist = Playlist.new(playlist_params)
+    @playlist = current_user.playlists.build(playlist_params)
 
     respond_to do |format|
       if @playlist.save
