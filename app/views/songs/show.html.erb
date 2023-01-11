@@ -19,6 +19,10 @@
   </div>
 
   <div>
+    <%= form.hidden_field :song_id, input_html: {value: @song.song_id} %>
+  </div>
+
+  <div>
     <%= form.submit "Add to playlist" %>
   </div>
 <% end %>
