@@ -2,13 +2,45 @@
 
 <h1>Songs</h1>
 
-<div id="songs">
-  <% @songs.each do |song| %>
-    <%= render song %>
-    <p>
-      <%= link_to "Show this song", song %>
-    </p>
-  <% end %>
-</div>
+<table>
+  <thead>
+    <th>Title</th>
+    <th>Genre</th>
+    <th>Release Date</th>
+    <th>Artist<th>
+    <th>Album</th>
+    <th>Options</tr>
+  </thead>
+
+  <tbody>
+      <% @songs.each do |song| %>
+        <tr>
+          <td>
+            <%= song.title%>
+          </td>
+
+          <td>
+            <%= song.genre%>
+          </td>
+
+          <td>
+            <%= song.release_data%>
+          </td>
+
+          <td>
+            <%= song.artist_id%>
+          </td>
+
+          <td>
+            <%= song.album%>
+          </td>
+          
+          <td>
+            <%= link_to "Show this song", song %>
+          </td>
+        </tr>
+      <% end %>
+  </tbody>
+</table>
 
 <%= link_to "New song", new_song_path %>

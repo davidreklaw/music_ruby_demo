@@ -2,13 +2,26 @@
 
 <h1>Playlists</h1>
 
-<div id="playlists">
-  <% @playlists.each do |playlist| %>
-    <%= render playlist %>
-    <p>
-      <%= link_to "Show this playlist", playlist %>
-    </p>
-  <% end %>
-</div>
+<table>
+  <thead>
+    <th>Name</th>
+    <th>Options</th>
+  </thead>
+
+  <tbody>
+    <%= @playlists.each do |playlist| %>
+
+      <tr>
+        <td>
+          <%= playlist.name %>
+        <td>
+        <td>
+          <%= link_to "Show this playlist", playlist %>
+        </td>
+      </tr>
+    
+    <% end %>
+  </tbody>
+</table>
 
 <%= link_to "New playlist", new_playlist_path %>
