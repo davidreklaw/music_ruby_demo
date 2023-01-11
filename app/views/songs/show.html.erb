@@ -3,8 +3,22 @@
 <%= render @song %>
 
 <div>
+
   <%= link_to "Edit this song", edit_song_path(@song) %> |
   <%= link_to "Back to songs", songs_path %>
 
   <%= button_to "Destroy this song", @song, method: :delete %>
 </div>
+
+<br>
+
+<%= form_with model: @playlist_track do |form| %>
+  <div>
+    <%= form.label :playlist, style: "display: block" %>
+    <%= form.collection_select :playlist_id, Playlist.order(:name), :id, :name, include_blank: true %>
+  </div>
+
+  <div>
+    <%= form.submit "Add to playlist" %>
+  </div>
+<% end %>
