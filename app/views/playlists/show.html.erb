@@ -8,3 +8,11 @@
 
   <%= button_to "Destroy this playlist", @playlist, method: :delete %>
 </div>
+
+<h2> Songs in Playlist </h2>
+
+<% if PlaylistTrack.exists?(:playlist_id_id => @playlist.playlist_id) %>
+  <h3>This playlist currently has songs</h3>
+<% else %>
+  <h3>This playlist currently does not have any songs</h3>
+<% end %>

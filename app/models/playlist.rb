@@ -1,4 +1,4 @@
 class Playlist < ApplicationRecord
     belongs_to :user
-    has_many :playlists_tracks, :dependent => :destroy
+    has_many :songs, :through => :playlist_tracks
 end
