@@ -15,7 +15,7 @@
 <%= form_with model: @playlist_track do |form| %>
   <div>
     <%= form.label :playlist, style: "display: block" %>
-    <%= form.collection_select :playlist_id, Playlist.order(:name), :id, :name, include_blank: true %>
+    <%= form.collection_select :playlist_id, current_user.playlists.order(:name), :id, :name, include_blank: true %>
   </div>
 
   <div>
