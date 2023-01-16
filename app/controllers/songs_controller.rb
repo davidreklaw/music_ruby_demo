@@ -61,6 +61,15 @@ class SongsController < ApplicationController
     end
   end
 
+  # Post
+  def add
+    playlist = Playlist.find(params[:playlist_id])
+    si = params[:song_id].values[0]
+    song = Song.find(si)
+    logger.info("#{playlist.name}")
+    logger.info("#{song.artist_id}")
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_song
@@ -69,6 +78,6 @@ class SongsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def song_params
-      params.require(:song).permit(:title, :genre, :release_data, :song_id, :artist_id, :album)
+      params.require(:song).permit(:title, :genre, :release_data, :artist_id, :album, :playlist_id, :song_id)
     end
 end

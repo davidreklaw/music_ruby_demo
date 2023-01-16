@@ -12,19 +12,19 @@
 
 <br>
 <h3>Add Song To A Playlist</h3>
-<%= form_with model: @playlist_track do |form| %>
+<%= form_tag({controller: "songs", action: "add"}, method: "post") do |form| %>
   <div style="display: flex">
-    <%= form.label :playlist, style: "display: block; padding-right:10px" %>
-    <%= form.collection_select :playlist_id, current_user.playlists.order(:name), :id, :name, prompt: true %>
+    <%= label :playlist, "Playlist: ", style: "display: block; padding-right:10px" %>
+    <%= collection_select @playlist, :playlist_id, current_user.playlists.order(:name), :id, :name, prompt: true %>
   </div>
 
   <br>
 
   <div>
-    <%= form.hidden_field :song_id, input_html: {value: @song.song_id} %>
+    <%= number_field :song_id, @song, value: @song.id %>
   </div>
 
   <div>
-    <%= form.submit "Add to playlist" %>
+    <%= submit_tag "Add to playlist" %>
   </div>
 <% end %>
