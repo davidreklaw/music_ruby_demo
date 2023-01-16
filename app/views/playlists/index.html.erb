@@ -9,17 +9,16 @@
   </thead>
 
   <tbody>
-    <%= @playlists.each do |playlist| %>
-
+    <% @playlists.each do |playlist| %>
       <tr>
         <td>
           <%= playlist.name %>
         <td>
+
         <td>
           <%= link_to "Show this playlist", playlist %>
         </td>
       </tr>
-    
     <% end %>
   </tbody>
 </table>
