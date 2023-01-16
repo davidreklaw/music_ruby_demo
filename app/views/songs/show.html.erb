@@ -7,16 +7,18 @@
   <%= link_to "Edit this song", edit_song_path(@song) %> |
   <%= link_to "Back to songs", songs_path %>
 
-  <%= button_to "Destroy this song", @song, method: :delete %>
+  <%= button_to "Destroy this song", @song, method: :delete , style: "margin-top: 10px" %>
 </div>
 
 <br>
-
+<h3>Add Song To A Playlist</h3>
 <%= form_with model: @playlist_track do |form| %>
-  <div>
-    <%= form.label :playlist, style: "display: block" %>
-    <%= form.collection_select :playlist_id, current_user.playlists.order(:name), :id, :name, include_blank: true %>
+  <div style="display: flex">
+    <%= form.label :playlist, style: "display: block; padding-right:10px" %>
+    <%= form.collection_select :playlist_id, current_user.playlists.order(:name), :id, :name, prompt: true %>
   </div>
+
+  <br>
 
   <div>
     <%= form.hidden_field :song_id, input_html: {value: @song.song_id} %>
