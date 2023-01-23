@@ -14,15 +14,25 @@
  *= require_self
  */
 
-nav ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
+ html {
+    margin: -10px;
+ }
 
-nav li {
-    display: inline-block;
-    margin-left: 70px;
-    padding-top: 35px;
-    font-size: x-large;
-}
+ .content {
+    padding-left: 10px;
+    padding-right: 10px;
+ }
+
+ .login {
+   padding: 10px 0;
+   text-align: center;
+   margin-top: 90px;
+ }
+
+ .field {
+   padding-bottom: 10px;
+ }
+
+ .actions {
+   padding-bottom: 10px;
+ }
