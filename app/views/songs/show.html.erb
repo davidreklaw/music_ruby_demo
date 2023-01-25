@@ -13,7 +13,7 @@
 <br>
 <h3>Add Song To A Playlist</h3>
 <%= form_tag({controller: "songs", action: "add"}, method: "post") do |form| %>
-  <div style="display: flex">
+  <div class="field">
     <%= label :playlist, "Playlist: ", style: "display: block; padding-right:10px" %>
     <%= collection_select @playlist, :playlist_id, current_user.playlists.order(:name), :id, :name, prompt: true %>
   </div>
@@ -27,4 +27,24 @@
   <div>
     <%= submit_tag "Add to playlist" %>
   </div>
+<% end %>
+
+<br>
+
+<%= form_tag({controller: "songs", action: "getcover"}, method: "post") do |form| %>
+  <div>
+    <%= hidden_field :song_id, @song, value: @song.id %>
+  </div>
+
+  <%= button_to("Get Cover Art",{controller: "songs", action: "getcover"}, method: "post") %>
+<% end %>
+
+<br>
+
+<%= form_tag({controller: "songs", action: "getvideo"}, method: "post") do |form| %>
+  <div>
+    <%= hidden_field :song_id, @song, value: @song.id %>
+  </div>
+
+  <%= button_to("Get Youtube Video",{controller: "songs", action: "getvideo"}, method: "post") %>
 <% end %>

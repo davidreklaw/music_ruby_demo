@@ -11,8 +11,28 @@
 
 <h2> Songs in Playlist </h2>
 
-<% if PlaylistTrack.exists?(:playlist_id_id => @playlist.playlist_id) %>
-  <h3>This playlist currently has songs</h3>
+<% if PlaylistTrack.exists?(:playlist_id_id => @playlist.id) %>
+    <table>
+      <thead>
+        <th>Song Title</th>
+
+        <th>Options</th>
+      </thead>
+
+      <tbody>
+        <% PlaylistTrack.exists?(:playlist_id_id => @playlist.id) do |song|%>
+          <tr>
+            <td>
+              <%= song.song_id_id%>
+            </td>
+
+            <td>
+              Remove From Playlist
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 <% else %>
   <h3>This playlist currently does not have any songs</h3>
 <% end %>

@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   resources :playlists
   resources :songs do 
     post :add, on: :collection
+    post :getcover, on: :collection
+    post :getvideo, on: :collection
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
