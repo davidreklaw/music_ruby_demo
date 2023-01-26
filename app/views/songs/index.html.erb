@@ -47,7 +47,8 @@
         <tfoot></tfoot>
     </tbody>
   </table>
+  <%= will_paginate @songs %>
 
 </div>
 
-<button><%= link_to "New song", new_song_path %></button>
+<button style="margin-top: 10px"><%= link_to "New song", new_song_path %></button>

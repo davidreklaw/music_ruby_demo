@@ -10,7 +10,8 @@ class SongsController < ApplicationController
 
   # GET /songs or /songs.json
   def index
-    @songs = current_user.songs
+    @songs = current_user.songs.paginate(:page => params[:page], :per_page => 10)
+    
   end
 
   # GET /songs/1 or /songs/1.json
@@ -93,9 +94,9 @@ class SongsController < ApplicationController
 
     @song = Song.find(song_id) 
 
-    query = @song.album
+    query = @song.album + " " + @song.artist_id
 
-    url = url = URI("https://spotify23.p.rapidapi.com/search/?q=#{query}&type=Album&offset=0&limit=1&numberOfTopResults=5")
+    url = url = URI("https://spotify23.p.rapidapi.com/search/?q=#{query}&type=multi&offset=0&limit=10&numberOfTopResults=5")
 
     http = Net::HTTP.new(url.host, url.port)
     http.use_ssl = true

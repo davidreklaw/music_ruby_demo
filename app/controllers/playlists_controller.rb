@@ -3,7 +3,7 @@ class PlaylistsController < ApplicationController
 
   # GET /playlists or /playlists.json
   def index
-    @playlists = current_user.playlists
+    @playlists = current_user.playlists.paginate(:page => params[:page], :per_page => 10)
   end
 
   # GET /playlists/1 or /playlists/1.json
