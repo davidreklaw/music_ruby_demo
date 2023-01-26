@@ -11,7 +11,6 @@ class SongsController < ApplicationController
   # GET /songs or /songs.json
   def index
     @songs = current_user.songs.paginate(:page => params[:page], :per_page => 10)
-    
   end
 
   # GET /songs/1 or /songs/1.json
@@ -22,6 +21,7 @@ class SongsController < ApplicationController
   def new
     #@song = Song.new
     @song = current_user.songs.build
+    
   end
 
   # GET /songs/1/edit

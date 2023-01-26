@@ -7,7 +7,7 @@
   <table>
     <thead>
       <tr>
-        <th>Name</th>
+        <th><%= link_to "Name", :sort => "name" %></th>
         <th>Options</th>
       </tr>
     </thead>
@@ -26,7 +26,6 @@
       <% end %>
     </tbody>
   </table>
-  <%= will_paginate @songs %>
 
 </div>
 
