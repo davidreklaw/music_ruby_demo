@@ -123,7 +123,7 @@ class SongsController < ApplicationController
 
     @song = Song.find(song_id) 
 
-    query = @song.title
+    query = @song.title + " " + @song.artist_id
     
     url = URI("https://youtube-search-results.p.rapidapi.com/youtube-search/?q=#{query}")
 
