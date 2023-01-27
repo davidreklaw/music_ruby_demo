@@ -117,6 +117,8 @@ class SongsController < ApplicationController
     @song.cover_url = imageurl
 
     @song.save
+
+    redirect_to song_url(@song)
   end
 
   def getvideo
@@ -147,6 +149,8 @@ class SongsController < ApplicationController
     @song.youtube_url = videourl
     
     @song.save
+
+    redirect_to song_url(@song)
   end
 
 
