@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_12_001053) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_27_153645) do
   create_table "playlist_tracks", force: :cascade do |t|
     t.integer "playlist_id_id", null: false
     t.integer "song_id_id", null: false
@@ -36,6 +36,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_12_001053) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
+    t.string "cover_url"
+    t.string "youtube_url"
   end
 
   create_table "users", force: :cascade do |t|
