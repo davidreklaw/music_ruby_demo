@@ -48,3 +48,11 @@
 
   <%= button_to("Get Youtube Video",{controller: "songs", action: "getvideo"}, method: "post") %>
 <% end %>
+
+<% if @song.cover_url.present? %>
+  <%= image_tag '#{imageurl}' %>
+<% end %>
+
+<% if @song.youtube_url.present? %>
+  <iframe src=#{videourl} width='900px' height='500px'>
+<% end %>
