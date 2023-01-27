@@ -31,28 +31,35 @@
 
 <br>
 
-<%= form_tag({controller: "songs", action: "getcover"}, method: "post") do |form| %>
-  <div>
-    <%= hidden_field :song_id, @song, value: @song.id %>
-  </div>
+<% if @song.cover_url.nil? %>
+  <%= form_tag({controller: "songs", action: "getcover"}, method: "post") do |form| %>
+    <div>
+      <%= hidden_field :song_id, @song, value: @song.id %>
+    </div>
 
-  <%= button_to("Get Cover Art",{controller: "songs", action: "getcover"}, method: "post") %>
+    <%= button_to("Get Cover Art",{controller: "songs", action: "getcover"}, method: "post") %>
+  <% end %>
+<% end %>
+
+
+<br>
+
+<% if @song.youtube_url.nil? %>
+  <%= form_tag({controller: "songs", action: "getvideo"}, method: "post") do |form| %>
+    <div>
+      <%= hidden_field :song_id, @song, value: @song.id %>
+    </div>
+
+    <%= button_to("Get Youtube Video",{controller: "songs", action: "getvideo"}, method: "post") %>
+  <% end %>
+<% end %>
+
+<% if @song.cover_url.present? %>
+  <%= image_tag @song.cover_url %>
 <% end %>
 
 <br>
 
-<%= form_tag({controller: "songs", action: "getvideo"}, method: "post") do |form| %>
-  <div>
-    <%= hidden_field :song_id, @song, value: @song.id %>
-  </div>
-
-  <%= button_to("Get Youtube Video",{controller: "songs", action: "getvideo"}, method: "post") %>
-<% end %>
-
-<% if @song.cover_url.present? %>
-  <%= image_tag '#{imageurl}' %>
-<% end %>
-
 <% if @song.youtube_url.present? %>
-  <iframe src=#{videourl} width='900px' height='500px'>
+  <%= content_tag(:iframe, '', src: @song.youtube_url, width: 560, height: 315, frameborder: 0) %>
 <% end %>

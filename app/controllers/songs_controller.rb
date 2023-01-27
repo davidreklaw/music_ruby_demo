@@ -115,6 +115,8 @@ class SongsController < ApplicationController
     imageurl = track_data['coverArt']['sources'][0]['url']
 
     @song.cover_url = imageurl
+
+    @song.save
   end
 
   def getvideo
@@ -143,6 +145,8 @@ class SongsController < ApplicationController
     videourl['watch?v='] = 'embed/'
 
     @song.youtube_url = videourl
+    
+    @song.save
   end
 
 
