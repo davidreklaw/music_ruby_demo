@@ -72,12 +72,12 @@ class SongsController < ApplicationController
     @playlist = Playlist.find(params[:playlist_id])
     song_id = params[:song_id].values[0]
     @song = Song.find(song_id)
-    logger.info("#{@playlist.name}")
-    logger.info("#{@song.artist_id}")
 
-    song_hash = { "song_id" => song_id}
+    @playlist_track = PlaylistTrack.new
 
-    @playlist_track = @playlist.songs.new(song_hash)
+    @playlist_track.song_id_id = song_id
+    @playlist_track.playlist_id_id = @playlist.id
+
 
     if @playlist_track.save
       format.html { redirect_to playlist_url(@playlist), notice: "Song was successfully added." }
@@ -114,7 +114,7 @@ class SongsController < ApplicationController
 
     imageurl = track_data['coverArt']['sources'][0]['url']
 
-    render inline: "<%= image_tag '#{imageurl}' %>"
+    @song.cover_url = imageurl
   end
 
   def getvideo
@@ -142,7 +142,7 @@ class SongsController < ApplicationController
     videourl = data['items'][0]["url"]
     videourl['watch?v='] = 'embed/'
 
-    render inline: "<iframe src=#{videourl} width='1000px' height='600px'>"
+    @song.youtube_url = videourl
   end
 
 
