@@ -1,0 +1,37 @@
+<table>
+    <thead>
+      <th>Song Title</th>
+    </thead>
+    <tbody>
+      <td>
+        <%= "playlist[song_ids][]", song.song_id, @playlist.songs.include?(song) %>
+        <%= song.title %>
+      </td>
+    </tbody>
+  </table>
+
+  <div>
+    <%= label :song_id, "Song Id: ", style: "display: block; padding-right: 10px" %>
+    <%= number_field @song, :song_id, value: @song.id %>
+  </div>
+
+07a612c820mshbce6f1d3dfbc143p173c8djsn817514da8835
+
+    song_id = params[:song_id].values[0]
+    puts song_id
+    @song = Song.find(song_id) 
+
+    query = @song.title
+
+    url = URI("https://spotify23.p.rapidapi.com/search/?q=#{query}&type=tracks&offset=0&limit=1&numberOfTopResults=1")
+
+    http = Net::HTTP.new(url.host, url.port)
+    http.use_ssl = true
+    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+    request = Net::HTTP::Get.new(url)
+    request["X-RapidAPI-Key"] = '07a612c820mshbce6f1d3dfbc143p173c8djsn817514da8835'
+    request["X-RapidAPI-Host"] = 'spotify23.p.rapidapi.com'
+
+    @response = http.request(request)
+    puts response.read_body
